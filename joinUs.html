@@ -972,7 +972,7 @@
       }
     });
 
-    /* ── Submit via Formspree ── */
+    /* ── Submit via Web3Forms ── */
     document.getElementById("applyForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -1006,24 +1006,26 @@
       btn.innerHTML = 'Submitting… <i class="fa-solid fa-spinner fa-spin"></i>';
 
       const formData = new FormData();
-      formData.append("_subject",   "New Job Application – " + document.getElementById("af_role").value);
-      formData.append("_replyto",   document.getElementById("af_email").value.trim());
-      formData.append("Role",       document.getElementById("af_role").value);
-      formData.append("First Name", document.getElementById("af_fname").value.trim());
-      formData.append("Last Name",  document.getElementById("af_lname").value.trim());
-      formData.append("Email",      document.getElementById("af_email").value.trim());
-      formData.append("Phone",      document.getElementById("af_phone").value.trim()    || "Not provided");
-      formData.append("LinkedIn",   document.getElementById("af_linkedin").value.trim() || "Not provided");
-      formData.append("Cover Note", document.getElementById("af_cover").value.trim());
-      formData.append("Resume",     resumeFile);
+      formData.append("access_key",  "7ea1ffe8-093f-415a-9ddf-075d4d26466b");
+      formData.append("subject",     "New Job Application – " + document.getElementById("af_role").value);
+      formData.append("from_name",   "AkeeTek Careers");
+      formData.append("replyto",     document.getElementById("af_email").value.trim());
+      formData.append("Role",        document.getElementById("af_role").value);
+      formData.append("First Name",  document.getElementById("af_fname").value.trim());
+      formData.append("Last Name",   document.getElementById("af_lname").value.trim());
+      formData.append("Email",       document.getElementById("af_email").value.trim());
+      formData.append("Phone",       document.getElementById("af_phone").value.trim()    || "Not provided");
+      formData.append("LinkedIn",    document.getElementById("af_linkedin").value.trim() || "Not provided");
+      formData.append("Cover Note",  document.getElementById("af_cover").value.trim());
+      formData.append("Resume",      resumeFile);
 
-      fetch("https://formspree.io/f/xojbpwyj", {
-        method:  "POST",
-        body:    formData,
-        headers: { "Accept": "application/json" }
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body:   formData
       })
-      .then(response => {
-        if (response.ok) {
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
           successEl.classList.add("show");
           document.getElementById("applyForm").reset();
           document.getElementById("fileSelected").classList.remove("show");
@@ -1032,11 +1034,11 @@
           btn.disabled = false;
           btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
         } else {
-          return response.json().then(data => { throw new Error(data.error || "Submission failed"); });
+          throw new Error(data.message || "Submission failed");
         }
       })
       .catch(err => {
-        console.error("Formspree error:", err);
+        console.error("Web3Forms error:", err);
         errorEl.classList.add("show");
         btn.disabled = false;
         btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
