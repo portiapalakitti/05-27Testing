@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkeeTek | Leadership Team</title>
+  <link rel="icon" type="image/png" href="Images/Logo-May2-2026.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="CSS/stylesheet.css">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-2: #0a0a0a;
+      --bg-3: #111;
+      --surface: #151517;
+      --border: #1f1f22;
+      --muted: #9ca3af;
+      --text: #f5f5f7;
+      --text-dim: #cfcfd3;
+      --accent: #ac6bff;
+      --accent-2: #7c3aed;
+      --shadow: 0 10px 40px rgba(172, 107, 255, 0.12);
+      --t: 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+      --radius: 14px;
+      --container: 1240px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding: 140px 5% 70px;
+      background:
+        radial-gradient(900px 500px at 80% 0%, rgba(172, 107, 255, 0.13), transparent 60%),
+        radial-gradient(600px 400px at 10% 100%, rgba(124, 58, 237, 0.08), transparent 60%),
+        var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 39px,
+          rgba(255, 255, 255, 0.015) 39px,
+          rgba(255, 255, 255, 0.015) 40px),
+        repeating-linear-gradient(90deg,
+          transparent,
+          transparent 39px,
+          rgba(255, 255, 255, 0.015) 39px,
+          rgba(255, 255, 255, 0.015) 40px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 60px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .page-hero p {
+      font-size: clamp(14px, 1.5vw, 18px);
+      color: var(--text-dim);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .accent-bar {
+      width: 52px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+
+    /* ── Leaders Grid ── */
+    .leaders-section {
+      padding: 70px 5%;
+      background: var(--bg-2);
+    }
+
+    .leaders-grid {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .leader-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+    }
+
+    .leader-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(172, 107, 255, 0.2);
+      border-color: rgba(172, 107, 255, 0.4);
+    }
+
+    .leader-img {
+      height: 160px;
+      background: linear-gradient(135deg, #1a1020, #0d0d18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .leader-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .leader-img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .leader-initials {
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(172, 107, 255, 0.2);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    /* All cards use brand accent */
+    .leader-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+    }
+
+    .leader-body {
+      padding: 20px;
+    }
+
+    .leader-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+
+    .leader-role {
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .leader-bio {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .leader-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 14px;
+    }
+
+    .leader-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .leader-link {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      transition: all var(--t);
+    }
+
+    .leader-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Values Strip ── */
+    .values-strip {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 28px 5%;
+    }
+
+    .values-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .values-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-right: 12px;
+      font-weight: 500;
+    }
+
+    .value-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(172, 107, 255, 0.08);
+      border: 1px solid rgba(172, 107, 255, 0.2);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .value-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA ── */
+    .join-cta {
+      background: var(--bg-2);
+      padding: 60px 5%;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .join-cta h2 {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .join-cta p {
+      color: var(--text-dim);
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all var(--t);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .cta-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(172, 107, 255, 0.35);
+    }
+
+    .cta-btn.primary:hover {
+      background: var(--accent-2);
+      transform: translateY(-2px);
+    }
+
+    .cta-btn.outline {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: #fff;
+    }
+
+    .cta-btn.outline:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #050507;
+      color: var(--text);
+      padding: 80px 5% 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-container {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .footer-about p {
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 300px;
+      font-size: 14px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      transition: all var(--t);
+      font-size: 14px;
+    }
+
+    .social-icons a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .footer-links h3 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 36px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-links ul li {
+      margin: 10px 0;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    .footer-links ul li a {
+      color: var(--text-dim);
+      transition: all var(--t);
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--accent);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-bottom span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .leaders-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .leaders-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+        </span>
+        <h1 class="logo-text">AkeeTek</h1>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="index.html#services">What we do <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html?expand=0#services">AI Automation</a></li>
+            <li><a href="index.html?expand=1#services">ERP &amp; CRM Solutions</a></li>
+            <li><a href="index.html?expand=2#services">Technology Transformation</a></li>
+            <li><a href="index.html?expand=3#services">Digital &amp; CX Solutions</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="leadership.html" class="active">Who we are <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="leadership.html">Leadership Team</a></li>
+            <li><a href="joinUs.html">Join Our Team</a></li>
+          </ul>
+        </li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-icon" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span class="hamburger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <!-- <div class="accent-bar"></div> -->
+    <!-- <p class="eyebrow">Who we are</p> -->
+    <h1>Meet Our Leaders</h1>
+    <p>Our leadership team brings together deep expertise in AI, enterprise technology, and digital transformation from
+      across the globe. United by a shared mission, they are committed to delivering measurable business outcomes and
+      driving sustainable value for clients across global markets.</p>
+  </section>
+
+  <!-- Leaders Grid -->
+  <section class="leaders-section">
+    <div class="leaders-grid">
+
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">BP</div>
+          </div>
+          <span class="leader-badge">Founder</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Bhushan Pal</div>
+          <div class="leader-role">Founder</div>
+          <div class="leader-bio">25+ years of experience in technology with companies such as SAP, Adobe, and Valtech,
+            and as a serial entrepreneur, with experience across the USA, Australia, Europe, and India. He holds an MBA.
+          </div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/in/bhushanpal/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <!-- <a href="mailto:info@akeetek.com" class="leader-link" aria-label="Email"><i
+                class="fa-solid fa-envelope"></i></a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">NH</div>
+          </div>
+          <span class="leader-badge">COO</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Nadeeka H</div>
+          <div class="leader-role">Chief Operating Officer</div>
+          <div class="leader-bio">15+ years of global experience in business consulting, she is responsible for software
+            services and AI delivery, as well as customer success. She holds a Master’s degree in Business and an MBA.
+          </div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/in/nadeeka-hennayake-8a895a56/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <!-- <a href="mailto:info@akeetek.com" class="leader-link" aria-label="Email"><i
+                class="fa-solid fa-envelope"></i></a> -->
+          </div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">PNP</div>
+          </div>
+          <span class="leader-badge">Lead - UI/UX</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Procia NP</div>
+          <div class="leader-role">Lead - UI/UX</div>
+          <div class="leader-bio">8+ years of experience in designing and delivering exceptional user journeys through
+            UI and UX. She is responsible for leading UI/UX across platforms. She holds a Bachelor's degree in
+            Technology.</div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/in/procia-palakitti-992003201/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">AL</div>
+          </div>
+          <span class="leader-badge">Head - Enterprise Architect</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Ashok L</div>
+          <div class="leader-role">Head - Enterprise Architect</div>
+          <div class="leader-bio">15+ years of experience working with global enterprises, such as banking, retail, and
+            manufacturing. He leads a team of brilliant minds and is responsible for delivering technical architecture.
+            He holds a Bachelor's degree in Technology.</div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/company/akeetek/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">PP</div>
+          </div>
+          <span class="leader-badge">Head – Cloud & Integrations</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Prakash P</div>
+          <div class="leader-role">Head – Cloud & Integrations</div>
+          <div class="leader-bio">13+ years in cloud infrastructure and enterprise integrations. He is responsible for
+            designing, implementing, and managing secure, scalable, and high-performing cloud, integration, and AI
+            architectures, including AI tokenization and sizing for enterprise solutions. He holds a Master's degree in
+            Technology.</div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/company/akeetek/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-img">
+          <div class="leader-img-placeholder">
+            <div class="leader-initials">TL</div>
+          </div>
+          <span class="leader-badge">Chief Mentor</span>
+        </div>
+        <div class="leader-body">
+          <div class="leader-name">Tony L</div>
+          <div class="leader-role">Chief Mentor</div>
+          <div class="leader-bio">Lecturer by profession, he goes beyond classroom teaching, serving as a mentor and
+            leader in guiding technology leaders to adapt and thrive in rapidly evolving environments. He focuses on
+            enabling leaders to navigate transformative changes in AI, people, and organizational behavior, fostering
+            sustainable and scalable organizations.</div>
+          <div class="leader-divider"></div>
+          <div class="leader-links">
+            <a href="https://www.linkedin.com/company/akeetek/" target="_blank" class="leader-link"
+              aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Values -->
+  <!-- <div class="values-strip">
+    <div class="values-inner">
+      <span class="values-label">Our values</span>
+      <div class="value-pill">
+        <div class="value-dot"></div>Customer Obsession
+      </div>
+      <div class="value-pill">
+        <div class="value-dot"></div>Outcome Driven
+      </div>
+      <div class="value-pill">
+        <div class="value-dot"></div>Global Delivery
+      </div>
+      <div class="value-pill">
+        <div class="value-dot"></div>Transparent Partnership
+      </div>
+      <div class="value-pill">
+        <div class="value-dot"></div>Innovation First
+      </div>
+      <div class="value-pill">
+        <div class="value-dot"></div>People First
+      </div>
+    </div>
+  </div> -->
+
+  <!-- CTA -->
+  <section class="join-cta">
+    <h2>Want to Join Our Team?</h2>
+    <p>Be part of a dynamic team shaping the future of AI, enterprise technology, and digital transformation <br>where
+      innovation, collaboration, and impact drive everything we do.</p>
+    <div class="cta-buttons">
+      <a href="JoinUs.html" class="cta-btn primary">View Open Roles <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="Contact.html" class="cta-btn outline">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <span class="logo-mark">
+            <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+              onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+          </span>
+          <h2>AkeeTek</h2>
+        </div>
+        <p>AkeeTek is where the best minds deliver AI automation and mission-critical software solutions for small and
+          medium enterprises globally.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/akeetek/" aria-label="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="index.html#services">AI Automation &amp; Consulting</a></li>
+          <li><a href="index.html#services">ERP &amp; CRM Solutions</a></li>
+          <li><a href="index.html#services">Technology Transformation</a></li>
+          <li><a href="index.html#services">Digital &amp; CX Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="index.html#services">What we do</a></li>
+          <li><a href="Leadership.html">Leadership Team</a></li>
+          <li><a href="JoinUs.html">Join our Team</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h3>Contact</h3>
+        <ul>
+          <li><i class="fa-solid fa-envelope" style="color:var(--accent);margin-right:8px"></i> sales@akeetek.com</li>
+          <li><i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:8px"></i> Auckland, 1010, New
+            Zealand</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>AkeeTek</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Javascript/script.js"></script>
+</body>
+
+</html>

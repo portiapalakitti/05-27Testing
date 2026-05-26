@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AkeeTek | Software Development Company</title>
+
+  <meta name="description"
+    content="AkeeTek delivers AI automation, ERP & CRM, technology transformation and digital CX solutions for global enterprises.">
+
+  <link rel="icon" type="image/png" href="Images/Logo-May2-2026.png">
+  <link rel="apple-touch-icon" href="Images/Logo-May2-2026.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"> <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="CSS/stylesheet.css">
+</head>
+
+
+<body>
+
+  <!-- Overlay for mobile nav -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+        </span>
+        <h1 class="logo-text">AkeeTek</h1>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+
+        <li class="dropdown">
+          <a href="#services">What we do <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#services" data-expand="0">AI Automation</a></li>
+            <li><a href="#services" data-expand="1">ERP &amp; CRM Solutions</a></li>
+            <li><a href="#services" data-expand="2">Technology Transformation</a></li>
+            <li><a href="#services" data-expand="3">Digital &amp; CX Solutions</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#recognition-box">Who we are <i class="fa-solid fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="leadership.html">Leadership Team</a></li>
+            <li><a href="joinUs.html">Join Team</a></li>
+          </ul>
+        </li>
+
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <button class="menu-icon" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span class="hamburger">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ HERO / CAROUSEL ============ -->
+  <section class="hero">
+    <div class="slides">
+
+      <div class="slide active">
+        <div class="hero-left">
+          <img src="Images/001-Carousel/AI Automation/AI (1).jpg" alt="AI Automation"
+            onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80'">
+        </div>
+        <div class="hero-right">
+          <h1>AI Automation &amp; Consulting</h1>
+          <p>Intelligent Automation with Real Business Impact and Efficiency Gains</p>
+          <div class="stats">
+            <div class="stat-box">
+              <h2>30-50%</h2>
+              <p>Higher Efficiency</p>
+            </div>
+            <div class="stat-box">
+              <h2>20-40%</h2>
+              <p>Cost Reduction</p>
+            </div>
+            <div class="stat-box">
+              <h2>15-25%</h2>
+              <p>Business Growth</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="hero-left">
+          <img src="Images/001-Carousel/ERP & CRM/ERP & CRM.jpeg" alt="ERP CRM"
+            onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'">
+        </div>
+        <div class="hero-right">
+          <h1>ERP &amp; CRM Solutions</h1>
+          <p>Streamlining Operations Through Connected Customer Experience Management</p>
+          <div class="stats">
+            <div class="stat-box">
+              <h2>25–40%</h2>
+              <p>Increase Visibility</p>
+            </div>
+            <div class="stat-box">
+              <h2>20–35%</h2>
+              <p>Higher Retention</p>
+            </div>
+            <div class="stat-box">
+              <h2>15–30%</h2>
+              <p>Revenue Growth</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="hero-left">
+          <img src="Images/001-Carousel/Technology Transformation/Technology Transformation.jpeg" alt="Technology"
+            onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80'">
+        </div>
+        <div class="hero-right">
+          <h1>Technology Transformation</h1>
+          <p>Driving Sustainable Change with Consistent Business Outcomes</p>
+          <div class="stats">
+            <div class="stat-box">
+              <h2>30–50%</h2>
+              <p>Increase Efficiency</p>
+            </div>
+            <div class="stat-box">
+              <h2>20–40%</h2>
+              <p>Reduce IT Cost</p>
+            </div>
+            <div class="stat-box">
+              <h2>25–45%</h2>
+              <p>Faster Service</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="hero-left">
+          <img src="Images/001-Carousel/Digital & CX Solutions/Digital Strategy0990.jpeg" alt="Digital CX"
+            onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80'">
+        </div>
+        <div class="hero-right">
+          <h1>CX &amp; Digital Strategy</h1>
+          <p>Delivering a 360° Customer Experience That Matters More Than Ever Before.</p>
+          <div class="stats">
+            <div class="stat-box">
+              <h2>20–40%</h2>
+              <p>CSAT / NPS</p>
+            </div>
+            <div class="stat-box">
+              <h2>25–45%</h2>
+              <p>Increased Engagement</p>
+            </div>
+            <div class="stat-box">
+              <h2>15–30%</h2>
+              <p>Digital Revenue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE DO ============ -->
+  <section class="section services-section" id="services">
+    <h2 class="section-title">What we do</h2>
+    <div class="grid">
+
+      <div class="card" id="service-card-0">
+        <div class="card-content">
+          <h3 class="highlight-number">AI Automation &amp; Consulting</h3>
+          <p class="default-text">Smart AI solutions that automate workflows and unlock measurable efficiency at
+            enterprise scale.</p>
+          <div class="card-image">
+            <img src="Images/002-What we do/AI & Automation.jpeg" alt="AI Automation"
+              onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'">
+          </div>
+        </div>
+        <div class="hover-overlay">
+          <h3>AI Automation &amp; Consulting</h3>
+          <p class="default-text">Smart AI solutions that automate workflows and unlock measurable efficiency at
+            enterprise scale.</p>
+          <p class="overlay-extra">We design enterprise automation systems using AI, machine learning and intelligent
+            analytics — built to compound value as your business grows.</p>
+          <button class="expand-btn" onclick="openExpand(0)">Expand <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card" id="service-card-1">
+        <div class="card-content">
+          <h3 class="highlight-number">ERP &amp; CRM Solutions</h3>
+          <p class="default-text">Unify Business, Integrate Systems, Deliver Customer 360, Drive Growth</p>
+          <div class="card-image">
+            <img src="Images/002-What we do/ERP & CRM.jpeg" alt="ERP CRM"
+              onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'">
+          </div>
+        </div>
+        <div class="hover-overlay">
+          <h3>ERP &amp; CRM Solutions</h3>
+          <p class="default-text">Unify Business, Integrate Systems, Deliver Customer 360, Drive Growth</p>
+          <p class="overlay-extra">At AkeeTek, we help customers select, implement, and support the right ERP and CRM
+            solutions to streamline operations and improve customer experiences.</p>
+          <button class="expand-btn" onclick="openExpand(1)">Expand <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card" id="service-card-2">
+        <div class="card-content">
+          <h3 class="highlight-number">Technology Transformation</h3>
+          <p class="default-text">Give wings to your business with connected systems that power steady growth</p>
+          <div class="card-image">
+            <img src="Images/002-What we do/Technology Transformation.jpeg" alt="Technology Transformation"
+              onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80'">
+          </div>
+        </div>
+        <div class="hover-overlay">
+          <h3>Technology Transformation</h3>
+          <p class="default-text">Give wings to your business with connected systems that power steady growth</p>
+          <p class="overlay-extra">AkeeTek helps take your business global with eCommerce, mobile applications, and
+            digital platforms, enabling cloud adoption, data-driven decisions, connected devices and AI automation.</p>
+          <button class="expand-btn" onclick="openExpand(2)">Expand <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card" id="service-card-3">
+        <div class="card-content">
+          <h3 class="highlight-number">Digital &amp; CX Solutions</h3>
+          <p class="default-text">Customer experience is at the center of every business, personalization across every
+            touchpoint</p>
+          <div class="card-image">
+            <img src="Images/002-What we do/Digital & CX.jpeg" alt="Digital CX"
+              onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80'">
+          </div>
+        </div>
+        <div class="hover-overlay">
+          <h3>Digital &amp; CX Solutions</h3>
+          <p class="default-text">Customer experience is at the center of every business, personalization across every
+            touchpoint</p>
+          <p class="overlay-extra">AkeeTek helps organizations carve digital experience solutions that enhance
+            engagement, streamline journeys, and improve overall business performance, driving key metrics such as NPS,
+            CSAT, and LTV.</p>
+          <button class="expand-btn" onclick="openExpand(3)">Expand <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPANDED SECTION ============ -->
+  <section class="expanded" id="expanded">
+    <h2 class="section-title">What we do</h2>
+    <div class="expanded-wrapper">
+      <div class="expand-card"></div>
+      <div class="expand-content">
+        <h2 id="expandTitle"></h2>
+        <ul class="expand-steps"></ul>
+        <div class="expand-quote">
+          <span></span>
+          <p id="expandDesc"></p>
+        </div>
+        <button class="back" onclick="closeExpand()">‹ Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION ============ -->
+  <section class="recognition" id="recognition-box">
+    <h2 class="section-title">Who we are</h2>
+    <div class="recognition-container">
+      <div class="recognition-image">
+        <img src="Images/003-Who we are/Auckland.jpg" alt="Auckland"
+          onerror="this.src='https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80'">
+        <div class="recognition-image-overlay"></div>
+      </div>
+      <div class="recognition-text">
+        <span class="eyebrow">WHO WE ARE</span>
+        <h2>Global Delivery.<br>Local Trust.<br>Real Business Outcomes.</h2>
+        <p>Auckland-based AI automation, consulting, and software services company serving clients globally, with
+          delivery centers in New Zealand, India, and Sri Lanka.</p>
+        <div class="join">
+          <a href="leadership.html" class="outline-btn one">Leadership Team <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="joinUs.html" class="outline-btn">Join our Team <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUCCESS STORIES ============ -->
+  <section class="success-stories" id="stories">
+    <h2 class="section-title">Our Success Stories</h2>
+    <div class="stories-wrapper">
+
+      <div class="story active">
+        <div class="story-image">
+          <img src="Images/004-Case Studies/Trucks.jpg" alt="Trucking"
+            onerror="this.src='https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80'">
+        </div>
+        <div class="story-content">
+          <span class="eyebrow">Success Story</span>
+          <h3>Uber-like platform for the Trucking Industry</h3>
+          <p>Uber-like marketplace platform for the unorganized trucking industry, connecting load posters and
+            transporters through verified trucks, trusted drivers, and integrated digital payments.</p>
+          <a href="Blog.html#story-0">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-image">
+          <img src="Images/004-Case Studies/Industry 4.0.jpeg" alt="Industry 4.0"
+            onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80'">
+        </div>
+        <div class="story-content">
+          <span class="eyebrow">Success Story</span>
+          <h3>Industry 4.0 Automation &amp; AI</h3>
+          <p>AI platform enabling smart manufacturing through IoT, predictive analytics, and intelligent
+            automation—identifying productivity loss, optimizing power consumption, and driving operational efficiency.
+          </p>
+          <a href="Blog.html#story-1">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-image">
+          <img src="Images/004-Case Studies/Biotech.jpeg" alt="Biotech"
+            onerror="this.src='https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80'">
+        </div>
+        <div class="story-content">
+          <span class="eyebrow">Success Story</span>
+          <h3>Smart Lab Optimization Through AI Automation</h3>
+          <p>Biotech AI automation platform optimizing lab efficiency across locations through intelligent scheduling,
+            automated slot booking, and resource utilization, maximizing machine ROI.</p>
+          <a href="Blog.html#story-2">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-image">
+          <img src="Images/004-Case Studies/Eyeglasses.jpeg" alt="Eyeglasses"
+            onerror="this.src='https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&q=80'">
+        </div>
+        <div class="story-content">
+          <span class="eyebrow">Success Story</span>
+          <h3>Seamless B2B &amp; B2C Eyeglasses Shopping Experience</h3>
+          <p>A seamless B2B &amp; B2C eyeglasses journey from search to purchase, enabling easy discovery, comparison,
+            and customization with integrated prescriptions and real-time inventory.</p>
+          <a href="Blog.html#story-3" class="learn-more">
+            Learn More <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-controls">
+      <button onclick="prevStory()" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+      <span id="storyCount">1 / 4</span>
+      <button onclick="nextStory()" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- ============ OUTCOMES ============ -->
+  <section class="outcomes" id="outcomes-blog">
+    <h2 class="section-title">Outcomes</h2>
+    <div class="outcomes-container">
+
+      <div class="outcome-box">
+
+        <div class="image-area">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="">
+        </div>
+
+        <div class="text-area">
+          <h3 class="highlight-number">71%</h3>
+
+          <p>
+            Reduce manual effort by up to 70% through intelligent automation
+          </p>
+
+          <a href="#" class="outcome-learn">
+            AI Automation & Consulting <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="outcome-box">
+
+        <div class="image-area">
+          <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600&q=80" alt="">
+        </div>
+
+        <div class="text-area">
+          <h3 class="highlight-number">35%</h3>
+
+          <p>
+            Improve efficiency by 35% and drive growth with connected customer experiences </p>
+
+          <a href="#" class="outcome-learn">
+            ERP & CRM<i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="outcome-box">
+
+        <div class="image-area">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="">
+        </div>
+
+        <div class="text-area">
+          <h3 class="highlight-number">3X</h3>
+
+          <p>
+            Accelerate product releases and innovation by 3x, and reduce costs by 40% </p>
+
+          <a href="#" class="outcome-learn">
+            Cloud & Tech Transformation <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="outcome-box">
+
+        <div class="image-area">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="">
+        </div>
+
+        <div class="text-area">
+          <h3 class="highlight-number">30%</h3>
+
+          <p>
+            Improve NPS by 30%, boost conversions by 40% across digital touchpoints and retention by 25% </p>
+
+          <a href="#" class="outcome-learn">
+            Digital Transformation & CX <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="approach-section section">
+    <h2 class="section-title">Our Approach</h2>
+    <p>No matter where you are in your technology transformation journey,<br> we seamlessly integrate with your teams as
+      a true partner.</p>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="approach-icon-box"><i class="fa-solid fa-lightbulb"></i></div>
+        <h3>Ideate</h3>
+        <p>Identify problem statement, define outcomes, and shape the solution vision.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon-box"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>Design</h3>
+        <p>Create scalable, user-centric architectures and detailed solution blueprints.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon-box"><i class="fa-solid fa-code"></i></div>
+        <h3>Develop</h3>
+        <p>Build and integrate robust solutions with an automation and ROI mindset.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon-box"><i class="fa-solid fa-gears"></i></div>
+        <h3>Maintain</h3>
+        <p>Ensure continuous optimization, support, and ongoing value realization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer-box">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <span class="logo-mark">
+            <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+              onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+          </span>
+          <h2>AkeeTek</h2>
+        </div>
+        <p>AkeeTek is where the best minds deliver AI automation and mission-critical software solutions for small and medium enterprises globally.
+        </p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/company/akeetek/" aria-label="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#services">AI Automation &amp; Consulting</a></li>
+          <li><a href="#services">ERP &amp; CRM Solutions</a></li>
+          <li><a href="#services">Technology Transformation</a></li>
+          <li><a href="#services">Digital &amp; CX Solutions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#services">What we do</a></li>
+          <li><a href="#recognition-box">Who we are</a></li>
+          <li><a href="#footer-box">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Contact</h3>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> sales@akeetek.com</li>
+          <li><i class="fa-solid fa-location-dot"></i> Auckland, 1010, New Zealand</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span>AkeeTek</span>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Javascript/script.js"></script>
+</body>
+
+
+</html>

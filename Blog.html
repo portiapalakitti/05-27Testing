@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkeeTek | Success Stories</title>
+    <link rel="icon" type="image/png" href="Images/Logo-May2-2026.png">
+    <link rel="apple-touch-icon" href="Images/Logo-May2-2026.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/stylesheet.css">
+
+    <style>
+:root {
+    --bg: #000;
+    --bg-2: #0a0a0a;
+    --bg-3: #111;
+    --surface: #151517;
+    --border: #1f1f22;
+    --muted: #9ca3af;
+    --text: #f5f5f7;
+    --text-dim: #cfcfd3;
+    --accent: #ac6bff;
+    --accent-2: #7c3aed;
+    --shadow: 0 10px 40px rgba(172, 107, 255, 0.12);
+    --t: 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    --radius: 14px;
+    --container: 1240px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ── Section ── */
+.story-detail.section {
+    padding: 45px 5%;
+    background: var(--bg-2);
+}
+
+.section-title {
+    font-size: clamp(26px, 4vw, 46px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 16px auto 0;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    border-radius: 2px;
+}
+
+/* ── Tabs ── */
+.ss-tabs {
+    max-width: var(--container);
+    margin: 40px auto 0;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.ss-tabs::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    transition: color var(--t), border-color var(--t);
+    margin-bottom: -1px;
+}
+
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* ── Card ── */
+.story-detail-card {
+    display: none;
+    max-width: var(--container);
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+    transition: box-shadow var(--t);
+    scroll-margin-top: 120px;
+}
+
+.story-detail-card.active { display: grid; }
+
+.story-detail-card:hover { box-shadow: var(--shadow); }
+
+/* ── LEFT: Image Panel ── */
+.sd-image {
+    position: relative;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 480px;           /* single fixed height — no conflicts */
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0d0d0d;
+}
+
+/* dark overlay */
+.sd-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.20) 40%,
+        rgba(0,0,0,0.75) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* purple glow */
+.sd-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(500px 300px at 90% 110%, rgba(172,107,255,0.22), transparent 65%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── Individual story background images ── */
+.story1 {
+    background-image: url("Images/004-Case Studies/Trucks.jpg");
+    background-position: 50% 50%;
+}
+.story2 {
+    background-image: url("Images/004-Case Studies/Industry 4.0.jpeg");
+    background-position: 100% 25%;
+}
+.story3 {
+    background-image: url("Images/004-Case Studies/Biotech.jpeg");
+    background-position: 50% 50%;
+}
+.story4 {
+    background-image: url("Images/004-Case Studies/Eyeglasses.jpeg");
+    background-position: 50% 65%;
+}
+
+/* ── Image text elements ── */
+.sd-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.sd-img-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.sd-accent-bar {
+    width: 40px;
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+    background: var(--accent);
+}
+
+.sd-img-headline {
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+}
+
+/* ── RIGHT: Content Panel ── */
+.sd-content {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-height: 480px;       /* matches image height */
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.sd-title {
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.sd-subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-top: -0.5rem;
+}
+
+.sd-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.sd-block {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    padding-left: 0.9rem;
+    border-left: 2px solid rgba(172,107,255,0.35);
+    transition: border-color var(--t);
+}
+
+.sd-block:hover { border-left-color: var(--accent); }
+
+.sd-block strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.sd-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.sd-stat {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    transition: border-color var(--t), box-shadow var(--t);
+}
+
+.sd-stat:hover {
+    border-color: rgba(172,107,255,0.4);
+    box-shadow: var(--shadow);
+}
+
+.sd-stat h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    position: relative;
+    padding-top: 12px;
+}
+
+.sd-stat h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.sd-stat p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* ── Tablet ── */
+@media (max-width: 860px) {
+    .story-detail-card.active {
+        grid-template-columns: 1fr;
+    }
+
+    .sd-image {
+        height: 260px;           /* fixed — same for all stories on tablet */
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sd-content {
+        min-height: unset;
+        justify-content: flex-start;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 540px) {
+    .story-detail.section {
+        padding: 60px 5%;
+    }
+
+    .tab-btn {
+        padding: 12px 16px;
+        font-size: 12px;
+    }
+
+    .sd-image {
+        height: 220px;           /* fixed — same for all stories on mobile */
+        padding: 1.75rem 1.25rem;
+    }
+
+    .sd-content {
+        padding: 1.75rem 1.25rem;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html#stories" class="logo">
+                <span class="logo-mark">
+                    <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
+                        onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+                </span>
+                <h1 class="logo-text">AkeeTek</h1>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="">Home</a></li>
+
+<li class="dropdown">
+  <a href="index.html#services">What we do <i class="fa-solid fa-chevron-down"></i></a>
+  <ul class="dropdown-menu">
+    <li><a href="index.html?expand=0#services">AI Automation</a></li>
+    <li><a href="index.html?expand=1#services">ERP &amp; CRM Solutions</a></li>
+    <li><a href="index.html?expand=2#services">Technology Transformation</a></li>
+    <li><a href="index.html?expand=3#services">Digital &amp; CX Solutions</a></li>
+  </ul>
+</li>
+                <li class="dropdown">
+                    <a href="index.html#recognition-box">Who we are <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="leadership.html">Leadership Team</a></li>
+                        <li><a href="joinUs.html">Join Team</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="Blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="menu-icon" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                <span class="hamburger">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+    </nav>
+    <script src="Javascript/script.js"></script>
+
+    <section class="story-detail section">
+        <!-- <h2 class="section-title">Our Success Stories</h2> -->
+
+        <div class="ss-tabs">
+            <button class="tab-btn active" onclick="switchTab(0)">Trucking Platform</button>
+            <button class="tab-btn" onclick="switchTab(1)">Industry 4.0 &amp; AI</button>
+            <button class="tab-btn" onclick="switchTab(2)">Smart Lab Optimization</button>
+            <button class="tab-btn" onclick="switchTab(3)">B2B &amp; B2C Eyeglasses</button>
+        </div>
+
+        <!-- STORY 1 -->
+        <div class="story-detail-card active" id="story-0">
+            <div class="sd-image story1">
+                <span class="sd-label">AkeeTek / Customer Success Story</span>
+                <div class="sd-img-bottom">
+                    <div class="sd-accent-bar"></div>
+                    <h2 class="sd-img-headline">Uber-like platform for<br>the Trucking Industry</h2>
+                </div>
+            </div>
+            <div class="sd-content">
+                <span class="eyebrow">Success Story</span>
+                <h2 class="sd-title">Trucking Reimagined.</h2>
+                <p class="sd-subtitle">From fragmented to a reimagined platform that's fully connected.</p>
+                <div class="sd-blocks">
+                    <div class="sd-block"><strong>Situation:</strong> India's trucking ecosystem was fragmented — load
+                        posters struggled to find reliable transporters while trucks ran empty on return trips.</div>
+                    <div class="sd-block"><strong>Task:</strong> Build a trusted, real-time digital marketplace that
+                        connects load posters and transporters end-to-end.</div>
+                    <div class="sd-block"><strong>Action:</strong> In collaboration with our customer, we launched a
+                        platform enabling smart load matching, verified fleets, escrow payments, live tracking, and
+                        AI-driven backhaul optimization.</div>
+                    <div class="sd-block"><strong>Result:</strong> An Uber-like platform with faster allocation, higher
+                        truck utilization, transparent pricing and a fully connected, data-driven freight network.</div>
+                </div>
+                <div class="sd-stats">
+                    <div class="sd-stat">
+                        <h2>18,000</h2>
+                        <p>Load posts a day</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>65,000</h2>
+                        <p>Trucks on platform</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>10,000+</h2>
+                        <p>Truck owners + Drivers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY 2 -->
+        <div class="story-detail-card" id="story-1">
+            <div class="sd-image story2">
+                <span class="sd-label">AkeeTek / Customer Success Story</span>
+                <div class="sd-img-bottom">
+                    <div class="sd-accent-bar"></div>
+                    <h2 class="sd-img-headline">Smarter Manufacturing<br>
+                        Powered by AI & IoT AI</h2>
+                </div>
+            </div>
+            <div class="sd-content">
+                <span class="eyebrow">Success Story</span>
+                <h2 class="sd-title">Industry 4.0 Automation & AI</h2>
+                <p class="sd-subtitle">From manual operations to intelligent performance</p>
+                <div class="sd-blocks">
+                    <div class="sd-block"><strong>Situation:</strong> Productivity loss and high power consumption, with
+                        difficulties identifying root
+                        causes due to manual operations.</div>
+                    <div class="sd-block"><strong>Task:</strong> Identify the root causes of productivity loss and
+                        excessive power consumption
+                        across manufacturing operations. Enable real-time visibility into machine performance
+                        and reduce dependency on manual monitoring</div>
+                    <div class="sd-block"><strong>Action:</strong> Implemented IoT sensors across production equipment
+                        to capture real-time
+                        machine, energy, and operational data. Deployed AI models to detect inefficiencies,
+                        predict downtime, identify root causes, and optimize energy consumption.</div>
+                    <div class="sd-block"><strong>Result:</strong> Reduced productivity loss by <strong>28%</strong> and
+                        lowered power
+                        consumption by <strong>22%</strong>
+                        across operations. Improved machine uptime by <strong>35%</strong> and delivered ROI within
+                        <strong>12</strong>
+                        months through smarter operational efficiency.
+                    </div>
+                </div>
+                <div class="sd-stats">
+                    <div class="sd-stat">
+                        <h2>28-30%</h2>
+                        <p>Reduced Productivity Loss</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>22%</h2>
+                        <p>Lowered Power Consumption</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>100%</h2>
+                        <p>ROI in 12 months</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY 3 -->
+        <div class="story-detail-card" id="story-2">
+            <div class="sd-image story3">
+                <span class="sd-label">AkeeTek / Customer Success Story</span>
+                <div class="sd-img-bottom">
+                    <div class="sd-accent-bar"></div>
+                    <h2 class="sd-img-headline">Smart Lab Optimization<br>
+                        Through AI</h2>
+                </div>
+            </div>
+            <div class="sd-content">
+                <span class="eyebrow">Success Story</span>
+                <h2 class="sd-title">Smart Lab Optimization through AI.</h2>
+                <p class="sd-subtitle">From underutilized las to Optimized utilization</p>
+                <div class="sd-blocks">
+                    <div class="sd-block"><strong>Situation:</strong> A diagnostics company operated multiple labs
+                        across the city, where over
+                        50% of lab capacity was underutilized while others were overburdened; since each
+                        diagnostic machine has a limited lifespan, this imbalance meant the expected ROI was
+                        not being achieved.
+                    </div>
+                    <div class="sd-block"><strong>Task:</strong> The goal was to maximize utilization of lab machinery
+                        by identifying capacity
+                        gaps, understanding demand patterns, and optimizing patient distribution across
+                        locations.</div>
+                    <div class="sd-block"><strong>Action:</strong> We used AI-driven forecasting to predict demand and
+                        machine availability,
+                        identified underutilized labs, and redirected patient flow through smart scheduling and
+                        targeted incentives.</div>
+                    <div class="sd-block"><strong>Result:</strong> This led to a 30–40% increase in overall lab
+                        utilization and a significant
+                        improvement in operational efficiency (25%+), along with faster turnaround times,
+                        better asset ROI, and an enhanced patient experience.
+
+                    </div>
+                </div>
+                <div class="sd-stats">
+                    <div class="sd-stat">
+                        <h2>30-40%</h2>
+                        <p>Increased Lab Utilization</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>25%+</h2>
+                        <p>Efficiency Increase</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>>80%</h2>
+                        <p>Customer Retention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY 4 -->
+        <div class="story-detail-card" id="story-3">
+            <div class="sd-image story4">
+                <span class="sd-label">AkeeTek / Customer Success Story</span>
+                <div class="sd-img-bottom">
+                    <div class="sd-accent-bar"></div>
+                    <h2 class="sd-img-headline">Seamless Commerce<br>
+                        from Search to Purchase </h2>
+                </div>
+            </div>
+            <div class="sd-content">
+                <span class="eyebrow">Success Story</span>
+                <h2 class="sd-title">Eyeglass Shopping Experience Redefined</h2>
+                <p class="sd-subtitle">From Offline Catalogue to Connected Commerce</p>
+                <div class="sd-blocks">
+                    <div class="sd-block"><strong>Situation:</strong> Reliance on offline sales, printed catalogs, low
+                        footfall, limited outreach, and a
+                        fragmented partner network restricted growth</div>
+                    <div class="sd-block"><strong>Task:</strong> Expand customer reach beyond physical stores and
+                        improve product discovery.
+                        Create a connected B2B and B2C buying experience across customers, retailers, and
+                        partners.</div>
+                    <div class="sd-block"><strong>Action:</strong> Built a digital commerce platform enabling online
+                        product discovery, virtual
+                        catalog browsing, prescription integration, and seamless ordering. Integrated partner
+                        networks, inventory visibility, and personalized recommendations to create a unified shopping
+                        journey.
+                    </div>
+                    <div class="sd-block"><strong>Result:</strong> Increased customer reach by <strong>4X</strong> and
+                        boosted online
+                        sales conversions by <strong>38%</strong> .
+                        Improved partner order efficiency by <strong>45%</strong> and increased overall revenue by
+                        <strong>27%</strong> within
+                        the first year.
+                    </div>
+                </div>
+                <div class="sd-stats">
+                    <div class="sd-stat">
+                        <h2>4X</h2>
+                        <p>Customer Reach</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>45%</h2>
+                        <p>Revenue Increase</p>
+                    </div>
+                    <div class="sd-stat">
+                        <h2>38%</h2>
+                        <p>Improved Partner Connect</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        function switchTab(index) {
+            document.querySelectorAll('.tab-btn').forEach((btn, i) => btn.classList.toggle('active', i === index));
+            document.querySelectorAll('.story-detail-card').forEach((card, i) => card.classList.toggle('active', i === index));
+        }
+        window.addEventListener("load", function () {
+            const hash = window.location.hash;
+
+            if (hash) {
+                const storyIndex = hash.replace("#story-", "");
+                switchTab(Number(storyIndex));
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
