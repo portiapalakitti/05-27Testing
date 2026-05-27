@@ -589,6 +589,61 @@
 
     .footer-bottom span { color: var(--accent); font-weight: 600; }
 
+
+    /* ── Success Popup ── */
+    .success-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 20000;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-backdrop.open { display: flex; }
+    .success-box {
+      background: var(--surface);
+      border: 1px solid rgba(172,107,255,0.3);
+      border-radius: 20px;
+      padding: 40px 36px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      animation: modalIn 0.3s cubic-bezier(0.2,0.7,0.2,1);
+      box-shadow: 0 20px 60px rgba(172,107,255,0.2);
+    }
+    .success-icon {
+      font-size: 52px;
+      color: #4ade80;
+      margin-bottom: 16px;
+    }
+    .success-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .success-box p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .success-ok {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 40px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: "Montserrat", sans-serif;
+      transition: all var(--t);
+      box-shadow: 0 6px 20px rgba(172,107,255,0.35);
+    }
+    .success-ok:hover { background: var(--accent-2); transform: translateY(-2px); }
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .culture-grid { grid-template-columns: repeat(2, 1fr); }
@@ -843,54 +898,39 @@
 
         <!-- Row 3: LinkedIn -->
         <div class="mfrow">
-          <label for="af_linkedin">LinkedIn Profile URL</label>
-          <input type="text" id="af_linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname">
+          <label for="af_linkedin">LinkedIn Profile URL <span class="req">*</span></label>
+          <input type="text" id="af_linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname" required>
         </div>
 
-        <!-- Row 4: Resume + Cover Note -->
-        <div class="mfrow-split">
-
-          <div class="resume-col">
-            <label>Resume / CV <span class="req">*</span></label>
-            <div class="file-zone" id="fileZone">
-              <input type="file" id="af_resume" accept=".pdf,.doc,.docx" onchange="handleFile(this)">
-              <div class="file-zone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-              <div class="file-zone-text">Drop here or click to browse</div>
-              <div class="file-zone-hint">PDF, DOC, DOCX — max 5 MB</div>
-            </div>
-            <div class="file-selected" id="fileSelected">
-              <i class="fa-solid fa-file-pdf"></i>
-              <span id="fileName">resume.pdf</span>
-              <button type="button" class="file-remove" onclick="removeFile()" aria-label="Remove file">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="cover-col">
-            <label for="af_cover">Cover Note <span class="req">*</span></label>
-            <textarea id="af_cover" name="cover_note"
-              placeholder="Tell us why you're a great fit for this role and what excites you about AkeeTek…"
-              required></textarea>
-          </div>
-
+        <!-- Row 4: Cover Note full width -->
+        <div class="mfrow">
+          <label for="af_cover">Cover Note <span class="req">*</span></label>
+          <textarea id="af_cover" name="cover_note" style="width:100%;background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--text);font-family:Montserrat,sans-serif;outline:none;resize:none;min-height:100px;transition:border-color var(--t),box-shadow var(--t);"
+            placeholder="Tell us why you're a great fit for this role and what excites you about AkeeTek…"
+            required></textarea>
         </div>
 
         <button type="submit" class="modal-submit" id="applySubmitBtn">
           Submit Application <i class="fa-solid fa-paper-plane"></i>
         </button>
 
-        <div class="modal-toast" id="applySuccess">
-          <i class="fa-solid fa-circle-check"></i>
-          <span>Application sent! We'll review your CV and be in touch soon.</span>
-        </div>
-
         <div class="modal-toast error" id="applyError">
           <i class="fa-solid fa-circle-exclamation"></i>
-          <span>Something went wrong. Please email your CV directly to <strong>info@akeetek.com</strong></span>
+          <span>Something went wrong. Please try again or email us at <strong>info@akeetek.com</strong></span>
         </div>
 
       </form>
+    </div>
+  </div>
+
+
+  <!-- ── Success Popup ── -->
+  <div class="success-backdrop" id="successPopup">
+    <div class="success-box">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h3>Application Submitted!</h3>
+      <p>Thank you for applying. We'll review your application and be in touch with you soon.</p>
+      <button class="success-ok" onclick="closeSuccessPopup()">OK</button>
     </div>
   </div>
 
@@ -916,8 +956,6 @@
       document.getElementById("fileSelected").classList.remove("show");
       document.getElementById("applySuccess").classList.remove("show");
       document.getElementById("applyError").classList.remove("show");
-      window._resumeData = null;
-      window._resumeName = null;
       document.getElementById("applyModal").classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -937,42 +975,11 @@
       if (e.key === "Escape") closeModal();
     });
 
-    /* ── File handling ── */
-    function handleFile(input) {
-      const file = input.files[0];
-      if (!file) return;
-      if (file.size > 5 * 1024 * 1024) {
-        alert("File is too large. Please upload a file under 5 MB.");
-        input.value = "";
-        return;
-      }
-      document.getElementById("fileName").textContent = file.name;
-      document.getElementById("fileSelected").classList.add("show");
-      window._resumeName = file.name;
-      const reader = new FileReader();
-      reader.onload = e => { window._resumeData = e.target.result; };
-      reader.readAsDataURL(file);
+    /* ── Success popup ── */
+    function closeSuccessPopup() {
+      document.getElementById("successPopup").classList.remove("open");
+      closeModal();
     }
-
-    function removeFile() {
-      document.getElementById("af_resume").value = "";
-      document.getElementById("fileSelected").classList.remove("show");
-      window._resumeData = null;
-      window._resumeName = null;
-    }
-
-    /* Drag-and-drop */
-    const zone = document.getElementById("fileZone");
-    zone.addEventListener("dragover",  e => { e.preventDefault(); zone.classList.add("drag-over"); });
-    zone.addEventListener("dragleave", ()=> zone.classList.remove("drag-over"));
-    zone.addEventListener("drop", e => {
-      e.preventDefault();
-      zone.classList.remove("drag-over");
-      if (e.dataTransfer.files.length) {
-        document.getElementById("af_resume").files = e.dataTransfer.files;
-        handleFile(document.getElementById("af_resume"));
-      }
-    });
 
     /* ── Submit via EmailJS ── */
     document.getElementById("applyForm").addEventListener("submit", function (e) {
@@ -1014,12 +1021,6 @@
         }
       }
 
-      if (!window._resumeData) {
-        zone.style.borderColor = "#e24b4a";
-        setTimeout(() => zone.style.borderColor = "", 2000);
-        return;
-      }
-
       btn.disabled = true;
       btn.innerHTML = 'Submitting\u2026 <i class="fa-solid fa-spinner fa-spin"></i>';
 
@@ -1035,13 +1036,12 @@
 
       emailjs.send("service_x02i9qe", "template_ke68ua4", params)
         .then(function () {
-          successEl.classList.add("show");
           document.getElementById("applyForm").reset();
-          document.getElementById("fileSelected").classList.remove("show");
           window._resumeData = null;
           window._resumeName = null;
           btn.disabled = false;
           btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
+          document.getElementById("successPopup").classList.add("open");
         }, function (err) {
           console.error("EmailJS error:", err);
           errorEl.classList.add("show");
