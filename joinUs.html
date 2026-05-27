@@ -953,8 +953,6 @@
       document.getElementById("modalDept").textContent = dept;
       document.getElementById("af_role").value = role;
       document.getElementById("applyForm").reset();
-      document.getElementById("fileSelected").classList.remove("show");
-      document.getElementById("applySuccess").classList.remove("show");
       document.getElementById("applyError").classList.remove("show");
       document.getElementById("applyModal").classList.add("open");
       document.body.style.overflow = "hidden";
@@ -986,10 +984,8 @@
       e.preventDefault();
 
       const btn       = document.getElementById("applySubmitBtn");
-      const successEl = document.getElementById("applySuccess");
       const errorEl   = document.getElementById("applyError");
 
-      successEl.classList.remove("show");
       errorEl.classList.remove("show");
 
       /* Validate required fields */
@@ -1037,8 +1033,6 @@
       emailjs.send("service_x02i9qe", "template_ke68ua4", params)
         .then(function () {
           document.getElementById("applyForm").reset();
-          window._resumeData = null;
-          window._resumeName = null;
           btn.disabled = false;
           btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
           document.getElementById("successPopup").classList.add("open");
