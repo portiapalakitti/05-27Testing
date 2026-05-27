@@ -987,6 +987,23 @@
 
       /* Validate required fields */
       const required = ["af_fname", "af_lname", "af_email", "af_cover"];
+
+      /* Email format validation */
+      const emailVal = document.getElementById("af_email").value.trim();
+      const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+      if (!emailOk) {
+        const el = document.getElementById("af_email");
+        el.focus();
+        el.style.borderColor = "#e24b4a";
+        el.style.boxShadow   = "0 0 0 3px rgba(226,75,74,0.15)";
+        el.placeholder = "Enter a valid email (e.g. john@email.com)";
+        setTimeout(() => {
+          el.style.borderColor = "";
+          el.style.boxShadow   = "";
+          el.placeholder = "john@email.com";
+        }, 3000);
+        return;
+      }
       for (const id of required) {
         const el = document.getElementById(id);
         if (!el.value.trim()) {
