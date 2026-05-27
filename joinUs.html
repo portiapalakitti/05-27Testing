@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="CSS/stylesheet.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>(function(){emailjs.init({publicKey:"EmKpAiI8JFwSY5N94"});})();</script>
 
   <style>
     :root {
@@ -972,7 +974,7 @@
       }
     });
 
-    /* ── Submit via Web3Forms ── */
+    /* ── Submit via EmailJS ── */
     document.getElementById("applyForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -995,37 +997,27 @@
         }
       }
 
-      const resumeFile = document.getElementById("af_resume").files[0];
-      if (!resumeFile) {
+      if (!window._resumeData) {
         zone.style.borderColor = "#e24b4a";
         setTimeout(() => zone.style.borderColor = "", 2000);
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = 'Submitting… <i class="fa-solid fa-spinner fa-spin"></i>';
+      btn.innerHTML = 'Submitting\u2026 <i class="fa-solid fa-spinner fa-spin"></i>';
 
-      const formData = new FormData();
-      formData.append("access_key",  "7ea1ffe8-093f-415a-9ddf-075d4d26466b");
-      formData.append("subject",     "New Job Application – " + document.getElementById("af_role").value);
-      formData.append("from_name",   "AkeeTek Careers");
-      formData.append("replyto",     document.getElementById("af_email").value.trim());
-      formData.append("Role",        document.getElementById("af_role").value);
-      formData.append("First Name",  document.getElementById("af_fname").value.trim());
-      formData.append("Last Name",   document.getElementById("af_lname").value.trim());
-      formData.append("Email",       document.getElementById("af_email").value.trim());
-      formData.append("Phone",       document.getElementById("af_phone").value.trim()    || "Not provided");
-      formData.append("LinkedIn",    document.getElementById("af_linkedin").value.trim() || "Not provided");
-      formData.append("Cover Note",  document.getElementById("af_cover").value.trim());
-      formData.append("Resume",      resumeFile);
+      const params = {
+        applicant_name:  document.getElementById("af_fname").value.trim() + " " + document.getElementById("af_lname").value.trim(),
+        applicant_email: document.getElementById("af_email").value.trim(),
+        reply_to:        document.getElementById("af_email").value.trim(),
+        phone:           document.getElementById("af_phone").value.trim()    || "Not provided",
+        linkedin:        document.getElementById("af_linkedin").value.trim() || "Not provided",
+        role:            document.getElementById("af_role").value,
+        cover_note:      document.getElementById("af_cover").value.trim(),
+      };
 
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body:   formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
+      emailjs.send("service_x02i9qe", "template_3gqgnw9", params)
+        .then(function () {
           successEl.classList.add("show");
           document.getElementById("applyForm").reset();
           document.getElementById("fileSelected").classList.remove("show");
@@ -1033,16 +1025,12 @@
           window._resumeName = null;
           btn.disabled = false;
           btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
-        } else {
-          throw new Error(data.message || "Submission failed");
-        }
-      })
-      .catch(err => {
-        console.error("Web3Forms error:", err);
-        errorEl.classList.add("show");
-        btn.disabled = false;
-        btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
-      });
+        }, function (err) {
+          console.error("EmailJS error:", err);
+          errorEl.classList.add("show");
+          btn.disabled = false;
+          btn.innerHTML = 'Submit Application <i class="fa-solid fa-paper-plane"></i>';
+        });
     });
 
   </script>
