@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,649 +10,115 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="CSS/stylesheet.css">
-
-  <!-- ══════════════════════════════════════════════════
-       EMAIL SETUP — EmailJS (free, no backend needed)
-       ─────────────────────────────────────────────────
-       1. Sign up at https://www.emailjs.com  (free tier = 200 emails/month)
-       2. Add an Email Service (Gmail / Outlook etc.) → copy Service ID
-       3. Create an Email Template → copy Template ID
-          Template variables used: {{from_name}}, {{from_email}},
-          {{company}}, {{service}}, {{message}}, {{reply_to}}
-       4. Go to Account → copy your Public Key
-       5. Replace the 3 placeholders below:
-          YOUR_PUBLIC_KEY   → your EmailJS public key
-          YOUR_SERVICE_ID   → your EmailJS service ID
-          YOUR_TEMPLATE_ID  → your EmailJS template ID
-  ═══════════════════════════════════════════════════ -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    (function () {
-      emailjs.init({ publicKey: "YOUR_PUBLIC_KEY" });
-    })();
-  </script>
-
+  <script>(function(){emailjs.init({publicKey:"EmKpAiI8JFwSY5N94"});})();</script>
   <style>
     :root {
-      --bg: #000;
-      --bg-2: #0a0a0a;
-      --bg-3: #111;
-      --surface: #151517;
-      --border: #1f1f22;
-      --muted: #9ca3af;
-      --text: #f5f5f7;
-      --text-dim: #cfcfd3;
-      --accent: #ac6bff;
-      --accent-2: #7c3aed;
-      --shadow: 0 10px 40px rgba(172, 107, 255, 0.12);
-      --t: 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
-      --radius: 14px;
-      --container: 1240px;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Montserrat", sans-serif;
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    ::selection {
-      background: var(--accent);
-      color: #000;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-
-    /* ── Hero ── */
-    .page-hero {
-      padding: 140px 5% 70px;
-      background:
-        radial-gradient(900px 500px at 80% 0%, rgba(172, 107, 255, 0.13), transparent 60%),
-        radial-gradient(600px 400px at 10% 100%, rgba(124, 58, 237, 0.08), transparent 60%),
-        var(--bg);
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px);
-      pointer-events: none;
-    }
-
-    .accent-bar {
-      width: 52px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin: 0 auto 20px;
-    }
-
-    .page-hero h1 {
-      font-size: clamp(32px, 5vw, 60px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .page-hero p {
-      font-size: clamp(14px, 1.5vw, 18px);
-      color: var(--text-dim);
-      max-width: 560px;
-      margin: 0 auto;
-      line-height: 1.8;
-      position: relative;
-    }
-
-    /* ── Contact Section ── */
-    .contact-section {
-      padding: 70px 5%;
-      background: var(--bg-2);
-    }
-
-    .contact-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    /* Left panel */
-    .contact-info h2 {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-
-    .contact-info>p {
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin-bottom: 36px;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-
-    .cd-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(172, 107, 255, 0.1);
-      border: 1px solid rgba(172, 107, 255, 0.25);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      font-size: 16px;
-      color: var(--accent);
-    }
-
-    .cd-label {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      font-weight: 500;
-    }
-
-    .cd-val {
-      font-size: 14px;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .info-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 28px 0;
-    }
-
-    .social-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .soc-link {
-      width: 38px;
-      height: 38px;
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      font-size: 14px;
-      color: var(--muted);
-      transition: all var(--t);
-    }
-
-    .soc-link:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    /* Right panel — Form */
-    .contact-form-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-    }
-
-    .form-heading {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
-    }
-
-    .form-subheading {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .frow {
-      margin-bottom: 18px;
-    }
-
-    .frow-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 500;
-    }
-
-    .req {
-      color: var(--accent);
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    textarea {
-      width: 100%;
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 14px;
-      color: var(--text);
-      font-family: "Montserrat", sans-serif;
-      outline: none;
-      transition: border-color var(--t), box-shadow var(--t);
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="tel"]:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(172, 107, 255, 0.12);
-    }
-
-    select {
-      appearance: none;
-      cursor: pointer;
-    }
-
-    select option {
-      background: #1a1a1e;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .select-wrap {
-      position: relative;
-    }
-
-    .select-wrap::after {
-      content: "\f078";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
-      font-size: 11px;
-    }
-
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
-    .privacy-note {
-      font-size: 12px;
-      color: #555;
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .privacy-note a {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .submit-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 28px;
-      background: var(--accent);
-      border: none;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      cursor: pointer;
-      font-family: "Montserrat", sans-serif;
-      transition: all var(--t);
-      white-space: nowrap;
-      box-shadow: 0 8px 24px rgba(172, 107, 255, 0.35);
-    }
-
-    .submit-btn:hover {
-      background: var(--accent-2);
-      transform: translateY(-2px);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* Success / Error toast */
-    .toast {
-      display: none;
-      align-items: center;
-      gap: 12px;
-      background: #0d1a0d;
-      border: 1px solid #2a5c2a;
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin-top: 16px;
-      font-size: 13px;
-      color: #7cd97c;
-    }
-
-    .toast.error {
-      background: #1a0d0d;
-      border-color: #5c2a2a;
-      color: #e07c7c;
-    }
-
-    .toast.show {
-      display: flex;
-    }
-
-    .toast i {
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-
-    /* ── Map strip ── */
-    .map-strip {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 50px 5%;
-    }
-
-    .map-inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .office-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: all var(--t);
-    }
-
-    .office-card:hover {
-      border-color: rgba(172, 107, 255, 0.4);
-      box-shadow: var(--shadow);
-      transform: translateY(-4px);
-    }
-
-    .office-flag {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .office-country {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .office-city {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .office-type {
-      font-size: 12px;
-      color: var(--muted);
-      background: var(--bg-3);
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-    }
-
-    /* ── Footer ── */
-    .footer {
-      background: #050507;
-      padding: 80px 5% 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-container {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .footer-logo h2 {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .footer-about p {
-      color: var(--text-dim);
-      line-height: 1.7;
-      max-width: 300px;
-      font-size: 14px;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--accent);
-      border-radius: 10px;
-      transition: all var(--t);
-      font-size: 14px;
-    }
-
-    .social-icons a:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    .footer-links h3 {
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .footer-links h3::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 36px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .footer-links ul li {
-      margin: 10px 0;
-      color: var(--text-dim);
-      font-size: 14px;
-    }
-
-    .footer-links ul li a {
-      color: var(--text-dim);
-      transition: all var(--t);
-    }
-
-    .footer-links ul li a:hover {
-      color: var(--accent);
-      padding-left: 4px;
-    }
-
-    .footer-bottom {
-      margin-top: 60px;
-      padding: 20px;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-bottom span {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 860px) {
-      .contact-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .map-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-      }
-
-      .footer-about {
-        grid-column: 1/-1;
-      }
-    }
-
-    @media (max-width: 540px) {
-      .frow-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-form-wrap {
-        padding: 24px 18px;
-      }
-
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
-    }
+      --bg:#000;--bg-2:#0a0a0a;--bg-3:#111;--surface:#151517;--border:#1f1f22;
+      --muted:#9ca3af;--text:#f5f5f7;--text-dim:#cfcfd3;--accent:#ac6bff;
+      --accent-2:#7c3aed;--shadow:0 10px 40px rgba(172,107,255,0.12);
+      --t:0.35s cubic-bezier(0.2,0.7,0.2,1);--radius:14px;--container:1240px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:"Montserrat",sans-serif;line-height:1.6}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--accent);color:#000}
+
+    .page-hero{padding:140px 5% 70px;background:radial-gradient(900px 500px at 80% 0%,rgba(172,107,255,0.13),transparent 60%),radial-gradient(600px 400px at 10% 100%,rgba(124,58,237,0.08),transparent 60%),var(--bg);border-bottom:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+    .page-hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.015) 39px,rgba(255,255,255,0.015) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.015) 39px,rgba(255,255,255,0.015) 40px);pointer-events:none}
+    .page-hero h1{font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:20px;position:relative}
+    .page-hero p{font-size:clamp(14px,1.5vw,18px);color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.8;position:relative}
+
+    .contact-section{padding:70px 5%;background:var(--bg-2)}
+    .contact-inner{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:50px;align-items:start}
+
+    .contact-info h2{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px}
+    .contact-info>p{font-size:14px;color:var(--text-dim);line-height:1.8;margin-bottom:36px}
+    .contact-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+    .cd-icon{width:42px;height:42px;background:rgba(172,107,255,0.1);border:1px solid rgba(172,107,255,0.25);border-radius:10px;display:grid;place-items:center;flex-shrink:0;font-size:16px;color:var(--accent)}
+    .cd-label{font-size:11px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.07em;font-weight:500}
+    .cd-val{font-size:14px;color:var(--text);font-weight:500}
+    .info-divider{height:1px;background:var(--border);margin:28px 0}
+    .social-row{display:flex;gap:10px;flex-wrap:wrap}
+    .soc-link{width:38px;height:38px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;display:grid;place-items:center;font-size:14px;color:var(--muted);transition:all var(--t)}
+    .soc-link:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-3px)}
+
+    .contact-form-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 32px}
+    .form-heading{font-size:18px;font-weight:700;margin-bottom:4px;letter-spacing:-0.01em}
+    .form-subheading{font-size:13px;color:var(--muted);margin-bottom:28px}
+
+    .frow{margin-bottom:18px}
+    .frow-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;align-items:start}
+    .frow-2 .frow{margin-bottom:0}
+
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px;text-transform:uppercase;letter-spacing:0.06em;font-weight:500}
+    .req{color:var(--accent)}
+
+    input[type="text"],input[type="email"],input[type="tel"],textarea{width:100%;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--text);font-family:"Montserrat",sans-serif;outline:none;transition:border-color var(--t),box-shadow var(--t)}
+    input[type="text"]:focus,input[type="email"]:focus,input[type="tel"]:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(172,107,255,0.12)}
+    textarea{resize:vertical;min-height:110px}
+
+    /* ── Custom Dropdown ── */
+    .custom-select{position:relative;width:100%}
+    .cs-selected{width:100%;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--muted);font-family:"Montserrat",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color var(--t),box-shadow var(--t);user-select:none}
+    .cs-selected.active,.cs-selected:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(172,107,255,0.12)}
+    .cs-selected.has-value{color:var(--text)}
+    .cs-arrow{font-size:11px;color:var(--muted);transition:transform var(--t);flex-shrink:0}
+    .cs-arrow.open{transform:rotate(180deg)}
+    .cs-options{display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;background:#1a1a1e;border:1px solid var(--border);border-radius:10px;overflow:hidden;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+    .cs-options.open{display:block}
+    .cs-option{padding:11px 16px;font-size:13px;color:var(--text-dim);cursor:pointer;transition:background var(--t),color var(--t);font-family:"Montserrat",sans-serif}
+    .cs-option:hover{background:rgba(172,107,255,0.1);color:var(--accent)}
+    .cs-option.selected{background:rgba(172,107,255,0.15);color:var(--accent);font-weight:600}
+
+    .form-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:4px}
+    .privacy-note{font-size:12px;color:#555;line-height:1.5;flex:1}
+    .privacy-note a{color:var(--accent);text-decoration:underline}
+
+    .submit-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:var(--accent);border:none;border-radius:999px;font-size:14px;font-weight:700;color:#fff;cursor:pointer;font-family:"Montserrat",sans-serif;transition:all var(--t);white-space:nowrap;box-shadow:0 8px 24px rgba(172,107,255,0.35)}
+    .submit-btn:hover{background:var(--accent-2);transform:translateY(-2px)}
+    .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+    .toast{display:none;align-items:center;gap:12px;background:#0d1a0d;border:1px solid #2a5c2a;border-radius:10px;padding:14px 18px;margin-top:16px;font-size:13px;color:#7cd97c}
+    .toast.error{background:#1a0d0d;border-color:#5c2a2a;color:#e07c7c}
+    .toast.show{display:flex}
+    .toast i{font-size:16px;flex-shrink:0}
+
+    /* ── Success Popup ── */
+    .success-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:20000;align-items:center;justify-content:center}
+    .success-backdrop.open{display:flex}
+    .success-box{background:var(--surface);border:1px solid rgba(172,107,255,0.3);border-radius:20px;padding:40px 36px;max-width:420px;width:90%;text-align:center;animation:popIn 0.3s cubic-bezier(0.2,0.7,0.2,1);box-shadow:0 20px 60px rgba(172,107,255,0.2)}
+    @keyframes popIn{from{opacity:0;transform:translateY(18px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .success-icon{font-size:52px;color:#4ade80;margin-bottom:16px}
+    .success-box h3{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--text)}
+    .success-box p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:24px}
+    .success-ok{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px 40px;font-size:14px;font-weight:700;cursor:pointer;font-family:"Montserrat",sans-serif;transition:all var(--t);box-shadow:0 6px 20px rgba(172,107,255,0.35)}
+    .success-ok:hover{background:var(--accent-2);transform:translateY(-2px)}
+
+    .map-strip{background:var(--bg);border-top:1px solid var(--border);padding:50px 5%}
+    .map-inner{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .office-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all var(--t)}
+    .office-card:hover{border-color:rgba(172,107,255,0.4);box-shadow:var(--shadow);transform:translateY(-4px)}
+    .office-flag{font-size:28px;margin-bottom:10px}
+    .office-country{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:6px}
+    .office-city{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-0.01em}
+    .office-type{font-size:12px;color:var(--muted);background:var(--bg-3);display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--border)}
+
+    @media(max-width:860px){.contact-inner{grid-template-columns:1fr}.map-inner{grid-template-columns:1fr}}
+    @media(max-width:540px){.frow-2{grid-template-columns:1fr}.contact-form-wrap{padding:24px 18px}}
   </style>
 </head>
-
 <body>
 
   <div class="nav-overlay" id="navOverlay"></div>
-
   <nav class="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">
         <span class="logo-mark">
-          <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
-            onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
+          <img src="Images/Logo-May2-2026.png" alt="AkeeTek" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
         </span>
         <h1 class="logo-text">AkeeTek</h1>
       </a>
@@ -684,64 +149,32 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="page-hero">
-    <!-- <div class="accent-bar"></div>
-    <p class="eyebrow">Get in touch</p> -->
     <h1>Contact Us</h1>
-    <p>We’d love to hear from you. Write to us at <a href="mailto:sales@akeetek.com"
-        style="color:var(--accent);text-decoration:underline">sales@akeetek.com</a> to explore
-      how we can collaborate and create meaningful business impact together, or send us a message using the form below.
-    </p>
+    <p>We'd love to hear from you. Write to us at <a href="mailto:sales@akeetek.com" style="color:var(--accent);text-decoration:underline">sales@akeetek.com</a> or send us a message below.</p>
   </section>
 
-  <!-- Contact Section -->
   <section class="contact-section">
     <div class="contact-inner">
 
-      <!-- Left: Info -->
       <div class="contact-info">
         <h2>Let's Talk</h2>
-        <p>Whether you're exploring AI automation, ERP modernisation, or need a trusted technology partner — we're here
-          to help. Tell us what you're working on.</p>
-
+        <p>Whether you're exploring AI automation, ERP modernisation, or need a trusted technology partner — we're here to help.</p>
         <div class="contact-detail">
           <div class="cd-icon"><i class="fa-solid fa-envelope"></i></div>
-          <div>
-            <div class="cd-label">Email</div>
-            <div class="cd-val">sales@akeetek.com</div>
-          </div>
+          <div><div class="cd-label">Email</div><div class="cd-val">sales@akeetek.com</div></div>
         </div>
-
         <div class="contact-detail">
           <div class="cd-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div>
-            <div class="cd-label">Headquarters</div>
-            <div class="cd-val">Auckland, 1010, New Zealand</div>
-          </div>
+          <div><div class="cd-label">Headquarters</div><div class="cd-val">Auckland, 1010, New Zealand</div></div>
         </div>
-
         <div class="contact-detail">
           <div class="cd-icon"><i class="fa-solid fa-building"></i></div>
-          <div>
-            <div class="cd-label">Delivery Centers</div>
-            <div class="cd-val">India &amp; Sri Lanka</div>
-          </div>
+          <div><div class="cd-label">Delivery Centers</div><div class="cd-val">India &amp; Sri Lanka</div></div>
         </div>
-
-        <!-- <div class="contact-detail">
-          <div class="cd-icon"><i class="fa-solid fa-clock"></i></div>
-          <div>
-            <div class="cd-label">Response Time</div>
-            <div class="cd-val">Within 24 business hours</div>
-          </div>
-        </div> -->
-
         <div class="info-divider"></div>
-
         <div class="social-row">
-          <a href="https://www.linkedin.com/company/akeetek/" target="_blank" class="soc-link" aria-label="LinkedIn"><i
-              class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.linkedin.com/company/akeetek/" target="_blank" class="soc-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="#" class="soc-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="#" class="soc-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="#" class="soc-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
@@ -749,88 +182,80 @@
         </div>
       </div>
 
-      <!-- Right: Form -->
       <div class="contact-form-wrap">
         <div class="form-heading">Send us a message</div>
         <div class="form-subheading">We'll reply to your work email within one business day.</div>
 
         <form id="contactForm" novalidate>
+
           <div class="frow-2">
-            <div class="frow" style="margin:0">
+            <div class="frow">
               <label for="cf_fname">First Name <span class="req">*</span></label>
-              <input type="text" id="cf_fname" name="first_name" placeholder="John" required>
+              <input type="text" id="cf_fname" placeholder="John" required>
             </div>
-            <div class="frow" style="margin:0">
+            <div class="frow">
               <label for="cf_lname">Last Name <span class="req">*</span></label>
-              <input type="text" id="cf_lname" name="last_name" placeholder="Smith" required>
+              <input type="text" id="cf_lname" placeholder="Smith" required>
             </div>
           </div>
 
           <div class="frow-2">
-            <div class="frow" style="margin:0">
+            <div class="frow">
               <label for="cf_email">Work Email <span class="req">*</span></label>
-              <input type="email" id="cf_email" name="from_email" placeholder="john@company.com" required>
+              <input type="email" id="cf_email" placeholder="john@company.com" required>
             </div>
             <div class="frow">
               <label for="cf_phone">Phone Number</label>
-              <input type="tel" id="cf_phone" name="phone" placeholder="+64 21 000 0000">
+              <input type="tel" id="cf_phone" placeholder="+64 21 000 0000">
             </div>
           </div>
 
-
-
           <div class="frow-2">
-            <div class="frow" style="margin:0">
-              <label for="cf_company">Company <span class="req">*</span></label>
-              <input type="text" id="cf_company" name="company" placeholder="Your Company Name" required>
-            </div>
-
             <div class="frow">
-              <label for="cf_service">What can we help with? <span class="req">*</span></label>
-              <div class="select-wrap">
-                <select id="cf_service" name="service" required>
-                  <option value="">— Select a service —</option>
-                  <option>AI Automation &amp; Consulting</option>
-                  <option>ERP &amp; CRM Solutions</option>
-                  <option>Technology Transformation</option>
-                  <option>Digital &amp; CX Solutions</option>
-                  <option>General Enquiry</option>
-                </select>
+              <label for="cf_company">Company <span class="req">*</span></label>
+              <input type="text" id="cf_company" placeholder="Your Company Name" required>
+            </div>
+            <div class="frow">
+              <label>What can we help with? <span class="req">*</span></label>
+              <input type="hidden" id="cf_service">
+              <div class="custom-select" id="customSelect">
+                <div class="cs-selected" id="csSelected" onclick="toggleDropdown()">
+                  <span id="csText">— Select a service —</span>
+                  <i class="fa-solid fa-chevron-down cs-arrow" id="csArrow"></i>
+                </div>
+                <div class="cs-options" id="csOptions">
+                  <div class="cs-option" onclick="selectOption(this)" data-value="AI Automation &amp; Consulting">AI Automation &amp; Consulting</div>
+                  <div class="cs-option" onclick="selectOption(this)" data-value="ERP &amp; CRM Solutions">ERP &amp; CRM Solutions</div>
+                  <div class="cs-option" onclick="selectOption(this)" data-value="Technology Transformation">Technology Transformation</div>
+                  <div class="cs-option" onclick="selectOption(this)" data-value="Digital &amp; CX Solutions">Digital &amp; CX Solutions</div>
+                  <div class="cs-option" onclick="selectOption(this)" data-value="General Enquiry">General Enquiry</div>
+                </div>
               </div>
             </div>
           </div>
 
-
-
           <div class="frow">
             <label for="cf_msg">Message <span class="req">*</span></label>
-            <textarea id="cf_msg" name="message"
-              placeholder="Tell us about your project, challenge, or what you'd like to achieve…" required></textarea>
+            <textarea id="cf_msg" placeholder="Tell us about your project, challenge, or what you'd like to achieve…" required></textarea>
           </div>
 
           <div class="form-footer">
-            <p class="privacy-note">By submitting you agree to our <a href="#">Privacy Policy</a>. We'll never share
-              your data with third parties.</p>
+            <p class="privacy-note">By submitting you agree to our <a href="#">Privacy Policy</a>. We'll never share your data with third parties.</p>
             <button type="submit" class="submit-btn" id="submitBtn">
               Send Message <i class="fa-solid fa-paper-plane"></i>
             </button>
           </div>
 
-          <div class="toast" id="successToast">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Message sent! We'll get back to you within 24 hours.</span>
-          </div>
-
           <div class="toast error" id="errorToast">
             <i class="fa-solid fa-circle-exclamation"></i>
-            <span>Something went wrong. Please email us directly at <strong>info@akeetek.com</strong></span>
+            <span>Something went wrong. Please email us directly at <strong>sales@akeetek.com</strong></span>
           </div>
+
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Office Locations -->
   <section class="map-strip">
     <div class="map-inner">
       <div class="office-card">
@@ -854,112 +279,126 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <!-- <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-about">
-        <div class="footer-logo">
-          <span class="logo-mark">
-            <img src="Images/Logo-May2-2026.png" alt="AkeeTek"
-              onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fa-solid fa-cube\'></i>'">
-          </span>
-          <h2>AkeeTek</h2>
-        </div>
-        <p>AkeeTek is where the best minds deliver mission-critical software solutions for global enterprises and SMEs.
-        </p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/company/akeetek/" aria-label="LinkedIn"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h3>Services</h3>
-        <ul>
-          <li><a href="index.html#services">AI Automation &amp; Consulting</a></li>
-          <li><a href="index.html#services">ERP &amp; CRM Solutions</a></li>
-          <li><a href="index.html#services">Technology Transformation</a></li>
-          <li><a href="index.html#services">Digital &amp; CX Solutions</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="index.html#services">What we do</a></li>
-          <li><a href="Leadership.html">Leadership Team</a></li>
-          <li><a href="JoinUs.html">Join our Team</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h3>Contact</h3>
-        <ul>
-          <li><i class="fa-solid fa-envelope" style="color:var(--accent);margin-right:8px"></i> info@akeetek.com</li>
-          <li><i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:8px"></i> Auckland, 1010, New
-            Zealand</li>
-        </ul>
-      </div>
+  <!-- Success Popup -->
+  <div class="success-backdrop" id="successPopup">
+    <div class="success-box">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out. We'll get back to you within one business day.</p>
+      <button class="success-ok" onclick="document.getElementById('successPopup').classList.remove('open')">OK</button>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 <span>AkeeTek</span>. All rights reserved.</p>
-    </div>
-  </footer> -->
+  </div>
 
   <script src="Javascript/script.js"></script>
   <script>
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
+
+    /* ── Custom Dropdown ── */
+    function toggleDropdown() {
+      const opts  = document.getElementById("csOptions");
+      const arrow = document.getElementById("csArrow");
+      const sel   = document.getElementById("csSelected");
+      const open  = opts.classList.contains("open");
+      opts.classList.toggle("open");
+      arrow.classList.toggle("open");
+      sel.classList.toggle("active");
+    }
+
+    function selectOption(el) {
+      const val = el.dataset.value;
+      document.getElementById("cf_service").value = val;
+      document.getElementById("csText").textContent = el.textContent;
+      document.getElementById("csSelected").classList.add("has-value");
+      document.getElementById("csSelected").style.borderColor = "";
+      document.getElementById("csSelected").style.boxShadow  = "";
+      document.getElementById("csOptions").classList.remove("open");
+      document.getElementById("csArrow").classList.remove("open");
+      document.getElementById("csSelected").classList.remove("active");
+      document.querySelectorAll(".cs-option").forEach(o => o.classList.remove("selected"));
+      el.classList.add("selected");
+    }
+
+    document.addEventListener("click", function(e) {
+      const cs = document.getElementById("customSelect");
+      if (cs && !cs.contains(e.target)) {
+        document.getElementById("csOptions").classList.remove("open");
+        document.getElementById("csArrow").classList.remove("open");
+        document.getElementById("csSelected").classList.remove("active");
+      }
+    });
+
+    /* ── Form Submit ── */
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const btn = document.getElementById("submitBtn");
-      const successToast = document.getElementById("successToast");
+      const btn        = document.getElementById("submitBtn");
       const errorToast = document.getElementById("errorToast");
-
-      // Hide previous toasts
-      successToast.classList.remove("show");
       errorToast.classList.remove("show");
 
-      // Basic validation
-      const required = ["cf_fname", "cf_lname", "cf_email", "cf_company", "cf_service", "cf_msg"];
+      /* Validate text fields */
+      const required = ["cf_fname", "cf_lname", "cf_email", "cf_company", "cf_msg"];
       for (const id of required) {
         const el = document.getElementById(id);
         if (!el.value.trim()) {
           el.focus();
           el.style.borderColor = "#e24b4a";
-          setTimeout(() => el.style.borderColor = "", 2000);
+          el.style.boxShadow   = "0 0 0 3px rgba(226,75,74,0.15)";
+          setTimeout(() => { el.style.borderColor = ""; el.style.boxShadow = ""; }, 2500);
           return;
         }
+      }
+
+      /* Validate email format */
+      const emailVal = document.getElementById("cf_email").value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)) {
+        const el = document.getElementById("cf_email");
+        el.focus();
+        el.style.borderColor = "#e24b4a";
+        el.style.boxShadow   = "0 0 0 3px rgba(226,75,74,0.15)";
+        el.placeholder = "Enter a valid email";
+        setTimeout(() => { el.style.borderColor = ""; el.style.boxShadow = ""; el.placeholder = "john@company.com"; }, 3000);
+        return;
+      }
+
+      /* Validate service dropdown */
+      if (!document.getElementById("cf_service").value) {
+        const sel = document.getElementById("csSelected");
+        sel.style.borderColor = "#e24b4a";
+        sel.style.boxShadow   = "0 0 0 3px rgba(226,75,74,0.15)";
+        setTimeout(() => { sel.style.borderColor = ""; sel.style.boxShadow = ""; }, 2500);
+        return;
       }
 
       btn.disabled = true;
       btn.innerHTML = 'Sending… <i class="fa-solid fa-spinner fa-spin"></i>';
 
-      // Build template params
       const params = {
-        from_name: document.getElementById("cf_fname").value.trim() + " " + document.getElementById("cf_lname").value.trim(),
+        from_name:  document.getElementById("cf_fname").value.trim() + " " + document.getElementById("cf_lname").value.trim(),
         from_email: document.getElementById("cf_email").value.trim(),
-        reply_to: document.getElementById("cf_email").value.trim(),
-        phone: document.getElementById("cf_phone").value.trim() || "Not provided",
-        company: document.getElementById("cf_company").value.trim(),
-        service: document.getElementById("cf_service").value,
-        message: document.getElementById("cf_msg").value.trim()
+        reply_to:   document.getElementById("cf_email").value.trim(),
+        phone:      document.getElementById("cf_phone").value.trim() || "Not provided",
+        company:    document.getElementById("cf_company").value.trim(),
+        service:    document.getElementById("cf_service").value,
+        message:    document.getElementById("cf_msg").value.trim()
       };
 
-      // ── Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID below ──
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
-        .then(function () {
-          successToast.classList.add("show");
+      emailjs.send("service_x02i9qe", "CONTACT_TEMPLATE_ID", params)
+        .then(function() {
           document.getElementById("contactForm").reset();
+          document.getElementById("csText").textContent = "— Select a service —";
+          document.getElementById("csSelected").classList.remove("has-value");
+          document.querySelectorAll(".cs-option").forEach(o => o.classList.remove("selected"));
+          document.getElementById("cf_service").value = "";
           btn.disabled = false;
           btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-        }, function (error) {
-          console.error("EmailJS error:", error);
+          document.getElementById("successPopup").classList.add("open");
+        }, function(err) {
+          console.error("EmailJS error:", err);
           errorToast.classList.add("show");
           btn.disabled = false;
           btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
         });
     });
+
   </script>
 </body>
-
 </html>
